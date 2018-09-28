@@ -22,3 +22,5 @@ export default {
   }
 }
 
+// auth.login({username:'hunger1', password:'123456'}).then(data => {console.log(data)})
+
