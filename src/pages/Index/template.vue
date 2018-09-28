@@ -1,6 +1,7 @@
 <template>
   <div id="index">
     <p>首页</p>
+    <el-button @click="onClick1">默认按钮</el-button>
   </div>
 </template>
 
