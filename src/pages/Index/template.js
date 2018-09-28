@@ -1,5 +1,9 @@
+import request from '@/helpers/request.js'
+
+window.request = request
+
+
 export default {
-  name: 'HelloWorld',
   data() {
     return {
       msg: 'Welcome to Your Vue.js App'
