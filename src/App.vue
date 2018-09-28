@@ -23,7 +23,7 @@
 
 <style lang="less">
 
-  /*@import "./assets/common.less";*/
+  @import "./assets/common.less";
 
   #app {
     display: grid;
@@ -31,7 +31,7 @@
     grid-template-rows: auto 1fr auto;
     grid-template-areas: "header header header"
                          ".      main  ."
-                          "footer footer footer";
+                         "footer footer footer";
 
     #header {
       grid-area: header;
