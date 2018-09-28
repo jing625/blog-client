@@ -2,6 +2,7 @@
   <div id="index">
     <p>首页</p>
     <el-button @click="onClick1">默认按钮</el-button>
+    <i class="el-icon-share"></i>
   </div>
 </template>
 
