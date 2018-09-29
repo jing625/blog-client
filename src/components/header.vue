@@ -11,17 +11,28 @@
     <template v-if="isLogin">
       <h1>Let's share</h1>
       <i class="edit el-icon-edit"></i>
-      <img class="avatar" src="http://cn.gravatar.com/avatar/1?s=128&d=identicon" alt="">
+      <img class="avatar" :src="user.avatar" :alt="user.username" :title="user.username">
     </template>
   </header>
 </template>
 
 <script>
+  import {mapGetters, mapActions} from 'vuex'
+  import auth from '@/api/auth'
+
+  window.auth = auth
   export default {
-    data(){
-      return {
-        isLogin: false
-      }
+    data() {
+      return {}
+    },
+    computed: {
+      ...mapGetters(['user', 'isLogin'])
+    },
+    created() {
+      this.checkLogin()
+    },
+    methods: {
+      ...mapActions(['checkLogin'])
     }
   }
 </script>
@@ -54,7 +65,6 @@
       margin: 20px 5px 0;
     }
   }
-
 
   header.login {
     display: flex;
