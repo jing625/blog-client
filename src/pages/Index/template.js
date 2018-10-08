@@ -1,26 +1,35 @@
-import request from '@/helpers/request.js'
-import auth from '@/api/auth.js'
 import blog from '@/api/blog.js'
 
-window.request = request
-window.auth = auth
-window.blog = blog
 
 export default {
-  data() {
+  data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      blogs: [],
+      total: 0,
+      page: 1
     }
   },
+
+  created() {
+    this.page = parseInt(this.$route.query.page) || 1
+    blog.getIndexBlogs({ page: this.page }).then(res => {
+      console.log(res)
+      this.blogs = res.data
+      this.total = res.total
+      this.page = res.page
+    })
+  },
+
   methods: {
-    onClick1() {
-      this.$message({
-        message: '警告哦，这是一条警告消息',
-        type: 'warning'
+    onPageChange(newPage) {
+      console.log(newPage)
+      blog.getIndexBlogs({ page: newPage }).then(res => {
+        console.log(res)
+        this.blogs = res.data
+        this.total = res.total
+        this.page = res.page
+        this.$router.push({ path: '/', query: { page: newPage}})
       })
     }
   }
 }
-
-// auth.login({username:'hunger1', password:'123456'}).then(data => {console.log(data)})
-
